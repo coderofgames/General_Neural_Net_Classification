@@ -10,6 +10,8 @@
 #include <vector>
 #include <algorithm>
 
+
+
 void Compute_IRIS_data_version_3_(int num_iterations, vector<vector<float>> &data, vector<int> &training_set, vector<int> &test_set, vector<int> &indexes, double &time_)
 {
 	Timer timer;

@@ -1,9 +1,9 @@
 #ifndef NEURAL_NETWORKS_H
 #define NEURAL_NETWORKS_H
 
-#include "Utils.h"
+
 #include "my_matrix.h"
-#include <typeinfo>
+
 
 
 
@@ -34,7 +34,7 @@ namespace
 		if (out.NumCols() != m.NumCols() || out.NumRows() != m.NumRows())
 		{
 			out.destroy();
-			out = m;
+			out.create(m.NumRows(), m.NumCols());
 		}
 		for (int i = 0; i < m.NumRows(); i++)
 			for (int j = 0; j < m.NumCols(); j++)
@@ -47,7 +47,8 @@ namespace
 	{
 		if (out.NumCols() != m.NumCols() || out.NumRows() != m.NumRows())
 		{
-			out = m;
+			out.destroy();
+			out.create(m.NumRows(), m.NumCols());
 		}
 		for (int i = 0; i < m.NumRows(); i++)
 			for (int j = 0; j < m.NumCols(); j++)
@@ -70,7 +71,8 @@ namespace
 	{
 		if (out.NumCols() != m.NumCols() || out.NumRows() != m.NumRows())
 		{
-			out = m;
+			out.destroy();
+			out.create(m.NumRows(), m.NumCols());
 		}
 		for (int i = 0; i < m.NumRows(); i++)
 			for (int j = 0; j < m.NumCols(); j++)
@@ -83,7 +85,8 @@ namespace
 	{
 		if (out.NumCols() != m.NumCols() || out.NumRows() != m.NumRows())
 		{
-			out = m;
+			out.destroy();
+			out.create(m.NumRows(), m.NumCols());
 		}
 		for (int i = 0; i < m.NumRows(); i++)
 			for (int j = 0; j < m.NumCols(); j++)
