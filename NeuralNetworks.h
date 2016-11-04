@@ -519,7 +519,7 @@ namespace Vanilla_Layer
 				{
 					for (int j = 0; j < weights_.NumCols(); j++)
 					{
-						weights_(i, j) = RandomFloat(0, 1) / 5;
+						weights_(i, j) =  RandomFloat(0, 1) / 5;
 					}
 				}
 			}
@@ -621,6 +621,14 @@ namespace Vanilla_Layer
 				neurons_.create(1, num_elements);
 				thetas_.create(1, num_elements);
 				delta_thetas_.create(1, num_elements);
+
+				for (int i = 0; i < thetas_.NumRows(); i++)
+				{
+					for (int j = 0; j < thetas_.NumCols(); j++)
+					{
+						thetas_(i, j) = RandomFloat(0, 1) / 5;
+					}
+				}
 			}
 
 			void Create(unsigned int num_elements, unsigned int num_inputs, Link_Tensor *in, Link_Tensor *out)
@@ -633,6 +641,14 @@ namespace Vanilla_Layer
 				neurons_.create(1, num_elements);
 				thetas_.create(1, num_elements);
 				delta_thetas_.create(1, num_elements);
+
+				for (int i = 0; i < thetas_.NumRows(); i++)
+				{
+					for (int j = 0; j < thetas_.NumCols(); j++)
+					{
+						thetas_(i, j) = RandomFloat(0, 1) / 5;
+					}
+				}
 			}
 
 			void SetConnections(Link_Tensor *in, Link_Tensor *out)
@@ -648,6 +664,14 @@ namespace Vanilla_Layer
 				neurons_.create(1, num_elements);
 				thetas_.create(1, num_elements);
 				delta_thetas_.create(1, num_elements);
+
+				for (int i = 0; i < thetas_.NumRows(); i++)
+				{
+					for (int j = 0; j < thetas_.NumCols(); j++)
+					{
+						thetas_(i, j) = RandomFloat(0, 1) / 5;
+					}
+				}
 			}
 
 			Layer(unsigned int num_elements, unsigned int num_inputs)
@@ -1048,7 +1072,7 @@ namespace Vanilla_Layer
 					{
 						if (out(i, j) < 0.0)
 						{
-							out(i, j) = out(i, j) + this->alpha_;
+							out(i, j) = out(i, j) + this->eps;
 						}
 						else
 						{
@@ -1395,12 +1419,12 @@ namespace Vanilla_Layer
 							}
 							case LAYER_TYPE::Leaky_ReLU_Layer_type:
 							{
-								input_layer[i]->connection_in->init_random_sample_weights_NearZero();
+								input_layer[i]->connection_in->init_random_sample_weights_sigmoid();
 								break;
 							}
 							case LAYER_TYPE::Linear_Layer_type:
 							{
-								input_layer[i]->connection_in->init_random_sample_weights_NearZero();
+								input_layer[i]->connection_in->init_random_sample_weights_sigmoid();
 								break;
 							}
 							case LAYER_TYPE::PReLU_Layer_type:
